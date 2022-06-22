@@ -1,10 +1,15 @@
+const fetch = require('node-fetch')
+
 async function getData (){
 	try{
-	const result = await fetch('https://jsonplaceholder.typicode.com/users',{
-		method: 'GET'
+	const result = await fetch('https://jsonplaceholder.typicode.com/users')
+	const data = await result.json()
+	data.map((obj)=>{
+		console.log(obj.name);
 	})
-	console.log(result);
-	}catch{
-
+	}catch(err){
+		//console.log(err);
 	}
 }
+
+getData()
